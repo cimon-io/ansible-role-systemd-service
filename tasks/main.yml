@@ -1,0 +1,16 @@
+---
+- name: "create systemd service"
+  template:
+    src: systemd.service.j2
+    dest: "/etc/systemd/system/{{ systemd_service_name }}.service"
+    mode: 0664
+  notify:
+    - daemon reload
+    - restart service
+  tags: [deploy, application, services]
+
+- name: "enable service"
+  systemd:
+    name: "{{ systemd_service_name }}"
+    enabled: "{{ systemd_service_enabled }}"
+  tags: [deploy, application, services]

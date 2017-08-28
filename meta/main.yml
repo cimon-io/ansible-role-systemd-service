@@ -1,0 +1,18 @@
+galaxy_info:
+  author: Eugene Ignatov
+  description: create systemd service configuration
+  company: Cimon.io
+
+  license: MIT
+
+  min_ansible_version: 2.0.0
+
+  platforms:
+    - name: Ubuntu
+      versions:
+      - all
+
+  galaxy_tags: []
+
+dependencies: []
+
