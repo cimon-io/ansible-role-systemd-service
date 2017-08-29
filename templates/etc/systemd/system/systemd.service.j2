@@ -2,40 +2,86 @@
 
 [Unit]
 Description="{{ systemd_service_description }}"
-{% if systemd_service_wants %}Wants={{ systemd_service_wants }}{% endif %}
-{% if systemd_service_requires %}Requires={{ systemd_service_requires }}{% endif %}
-{% if systemd_service_before %}Before={{ systemd_service_before }}{% endif %}
-{% if systemd_service_after %}After={{ systemd_service_after }}{% endif %}
+{% if systemd_service_wants %}
+Wants={{ systemd_service_wants }}
+{% endif %}
+{% if systemd_service_requires %}
+Requires={{ systemd_service_requires }}
+{% endif %}
+{% if systemd_service_before %}
+Before={{ systemd_service_before }}
+{% endif %}
+{% if systemd_service_after %}
+After={{ systemd_service_after }}
+{% endif %}
 
 [Service]
-{% if systemd_service_type %}Type={{ systemd_service_type }}{% endif %}
+{% if systemd_service_type %}
+Type={{ systemd_service_type }}
+{% endif %}
 
-{% if systemd_service_timeoutsec %}TimeoutSec={{ systemd_service_timeoutsec }}{% endif %}
-{% if systemd_service_restartsec %}RestartSec={{ systemd_service_restartsec }}{% endif %}
-{% if systemd_service_restart %}Restart={{ systemd_service_restart }}{% endif %}
+{% if systemd_service_timeoutsec %}
+TimeoutSec={{ systemd_service_timeoutsec }}
+{% endif %}
+{% if systemd_service_restartsec %}
+RestartSec={{ systemd_service_restartsec }}
+{% endif %}
+{% if systemd_service_restart %}
+Restart={{ systemd_service_restart }}
+{% endif %}
 
-{% if systemd_service_environment %}Environment={{ systemd_service_environment }}{% endif %}
-{% if systemd_service_environmentfile %}EnvironmentFile={{ systemd_service_environmentfile }}{% endif %}
+{% if systemd_service_environment %}
+Environment={{ systemd_service_environment }}
+{% endif %}
+{% if systemd_service_environmentfile %}
+EnvironmentFile={{ systemd_service_environmentfile }}
+{% endif %}
 
-{% if systemd_service_workingdirectory %}WorkingDirectory={{ systemd_service_workingdirectory }}{% endif %}
-{% if systemd_service_user %}User={{ systemd_service_user }}{% endif %}
-{% if systemd_service_group %}Group={{ systemd_service_group }}{% endif %}
+{% if systemd_service_workingdirectory %}
+WorkingDirectory={{ systemd_service_workingdirectory }}
+{% endif %}
+{% if systemd_service_user %}
+User={{ systemd_service_user }}
+{% endif %}
+{% if systemd_service_group %}
+Group={{ systemd_service_group }}
+{% endif %}
 
-{% if systemd_service_oomscoreadjust %}OOMScoreAdjust={{ systemd_service_oomscoreadjust }}{% endif %}
-{% if systemd_service_nice %}Nice={{ systemd_service_nice }}{% endif %}
+{% if systemd_service_oomscoreadjust %}
+OOMScoreAdjust={{ systemd_service_oomscoreadjust }}
+{% endif %}
+{% if systemd_service_nice %}
+Nice={{ systemd_service_nice }}
+{% endif %}
 
-{% if systemd_service_execstop %}ExecStop={{ systemd_service_execstop }}{% endif %}
-{% if systemd_service_execstoppost %}ExecStopPost={{ systemd_service_execstoppost }}{% endif %}
-{% if systemd_service_execreload %}ExecReload={{ systemd_service_execreload }}{% endif %}
+{% if systemd_service_execstop %}
+ExecStop={{ systemd_service_execstop }}
+{% endif %}
+{% if systemd_service_execstoppost %}
+ExecStopPost={{ systemd_service_execstoppost }}
+{% endif %}
+{% if systemd_service_execreload %}
+ExecReload={{ systemd_service_execreload }}
+{% endif %}
 
-{% if systemd_service_execstartpre %}ExecStartPre={{ systemd_service_execstartpre }}{% endif %}
-{% if systemd_service_execstartpost %}ExecStartPost={{ systemd_service_execstartpost }}{% endif %}
-{% if systemd_service_execstart %}ExecStart={{ systemd_service_execstart }}{% endif %}
+{% if systemd_service_execstartpre %}
+ExecStartPre={{ systemd_service_execstartpre }}
+{% endif %}
+{% if systemd_service_execstartpost %}
+ExecStartPost={{ systemd_service_execstartpost }}
+{% endif %}
+{% if systemd_service_execstart %}
+ExecStart={{ systemd_service_execstart }}
+{% endif %}
 
 StandardInput={{ systemd_service_standardinput }}
 StandardOutput={{ systemd_service_standardoutput }}
 StandardError={{ systemd_service_standarderror }}
 
 [Install]
-{% if systemd_service_wantedby %}WantedBy={{ systemd_service_wantedby }}{% endif %}
-{% if systemd_service_requiredby %}RequiredBy={{ systemd_service_requiredby }}{% endif %}
+{% if systemd_service_wantedby %}
+WantedBy={{ systemd_service_wantedby }}
+{% endif %}
+{% if systemd_service_requiredby %}
+RequiredBy={{ systemd_service_requiredby }}
+{% endif %}
