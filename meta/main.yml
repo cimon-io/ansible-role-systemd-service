@@ -1,6 +1,6 @@
 galaxy_info:
   author: Eugene Ignatov
-  description: create systemd service configuration
+  description: Create and configure systemd service
   company: Cimon.io
 
   license: MIT

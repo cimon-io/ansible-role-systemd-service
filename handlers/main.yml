@@ -1,8 +1,8 @@
 ---
-- name: daemon reload
-  shell: "systemctl daemon-reload"
+- name: "daemon reload"
+  command: "systemctl daemon-reload"
 
-- name: restart service
+- name: "restart service"
   systemd:
     name: "{{ systemd_service_name }}"
     state: restarted
