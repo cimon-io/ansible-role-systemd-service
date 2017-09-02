@@ -51,7 +51,7 @@ systemd_service_requires: ""
 systemd_service_wants: ""
 ```
 
-The parameters can consist of several space-separated unit names. The may also be specified more than once. To configure the order in which services are started or stopped use the following parameters. Note, that if units don't have ordering dependencies between them, they are shut down or started up simultaneously.
+The parameters can consist of several space-separated unit names. They may also be specified more than once. To configure the order in which services are started or stopped use the following parameters. Note, that if units don't have ordering dependencies between them, they are shut down or started up simultaneously.
 
 ```yaml
 # A space-separated list of units which must be started after (and before) the service
@@ -61,7 +61,7 @@ systemd_service_before: ""
 
 ### Service section options
 
-The service section carries information about the service and the process it supervises. The parameter `systemd_service_type` configures the process start-up type for this service unit.
+This section includes information about the service and the process it supervises. The parameter `systemd_service_type` configures the process start-up type for this service unit.
 
 ```yaml
 systemd_service_type: ""
@@ -72,19 +72,19 @@ It can take values:
 - `forking` - assumes that the service is started once and the process branches out with the completion of the parent process. This type is used to launch classic daemons. If this mode is used, it is recommended to use the `systemd_service_pidfile` parameter too (see below), so that systemd can identify the main process of the daemon.
 
 Other values behavior is similar to simple value. However, they have some differences:
-- `oneshot` - the service is expected to exit before systemd starts follow-up units.
-- `dbus` - it is expected that the daemon acquires a name on the `D-Bus` bus.
-- `notify` - the daemon sends a notification message via `sd_notify(3)` or a similar call when it has finished starting up.
+- `oneshot` - the service is expected to exit before systemd starts follow-up units;
+- `dbus` - it is expected that the daemon acquires a name on the `D-Bus` bus;
+- `notify` - the daemon sends a notification message via `sd_notify(3)` or a similar call when it has finished starting up;
 - `idle` - actual execution of the service binary is delayed until all active jobs are dispatched. Note that this type is useful only to improve console output, it is not useful as a general unit ordering tool.
 
-Set a path to the PIDfile to use `forking` start-up type.
+Set a path to the PID file to use `forking` start-up type.
 
 ```yaml
 # Takes an absolute file name pointing to the PID file of this daemon
 systemd_service_pidfile: ""
 ```
 
-Specify the UNIX user and a group under which the service should be executed. The parameters take a single user or group name, or a numeric ID as a value. For system services and for user services of the root user the default is `root` that may be switched to another one. For user services of any other user, switching user identity is not permitted. so the only allowed value is the same user the user's service manager is running as. If no group is set, the default user group is used.
+You can specify the UNIX user and a group under which the service should be executed. The parameters take a single user or group name, or a numeric ID as a value. For system services and for user services of the root user the default is `root` that may be switched to another one. For user services of any other user switching user identity is not permitted. So the only allowed value is the same user the user's service manager is running as. If no group is set, the default user group is used.
 
 ```yaml
 systemd_service_user: ""
@@ -104,7 +104,7 @@ An adjustment level for the Out-Of-Memory killer for the process is specified wi
 systemd_service_oomscoreadjust: ""
 ```
 
-Use next parameters to specify commands that will be executed depending on the status of your service. The parameters may be used more than once or their values may include several commands. Multiple command lines may be concatenated in a single directive by separating them with semicolons (these semicolons must be passed as separate words). Lone semicolons may be escaped as '\;'. The command to execute must be an absolute path name. It may contain spaces, but control characters are not allowed. For each command the first argument must be an absolute path to an executable. An empty  string will reset the list of commands specified before for the parameter.
+Next parameters allows you to specify commands that will be executed depending on the state of your service. The parameters may be used more than once or their values may include several commands. Multiple command lines may be concatenated in a single directive by separating them with semicolons. The command to execute must be an absolute path name. It may contain spaces, but control characters are not allowed. For each command the first argument must be an absolute path to an executable. An empty string will reset the list of commands specified before for the parameter.
 
 ```yaml
 # Commands that are executed when this service is started
@@ -127,8 +127,8 @@ systemd_service_execstoppost: ""
 systemd_service_execreload: ""
 ```
 
-Set whether the service should be restarted when the service process (the main service process or one specified by 'execstartpre', 'execstartpost', 'execStop', 'execstoppost' or 'execrReload' parameters) exits, is killed, or a timeout is reached. The `systemd_service_restart` parameter takes one of the following values:
-- `no` - the service will not be restarted;
+Set whether the service should be restarted when the service process (the main service process or one specified by 'execstartpre', 'execstartpost', 'execstop', 'execstoppost' or 'execreload' parameters) exits, is killed, or a timeout is reached. The `systemd_service_restart` parameter takes one of the following values:
+- `no` (by default) - the service will not be restarted;
 - `on-success` - the service will be restarted only when the service process exits cleanly (with an exit code of 0, or one of the signals SIGHUP, SIGINT, SIGTERM or SIGPIPE);
 - `on-failure` - the service will be restarted when the process exits with a non-zero exit code, is terminated by a signal, when an operation times out, and when the configured watchdog timeout is triggered;
 - `on-abnormal` - the service will be restarted when the process is terminated by a signal, when an operation times out, or when the watchdog timeout is triggered;
@@ -137,11 +137,11 @@ Set whether the service should be restarted when the service process (the main s
 - `always` - the service will be restarted anyway.
 
 ```yaml
-# https://www.freedesktop.org/software/systemd/man/systemd.service.html#Restart=
+# When the service must be restarted
 systemd_service_restart: ""
 ```
 
-You are able to specify a time delay for above-mentioned commands with next parameters. The take a value in seconds or a time span value such as '5min 20s'.
+You are able to specify a time delay for above-mentioned commands with next parameters. They take a value in seconds or a time span value such as '5min 20s'.
 
 ```yaml
 # Configures the time to sleep before restarting a service (as configured with `systemd_service_restart`).
@@ -150,7 +150,7 @@ systemd_service_restartsec: ""
 systemd_service_timeoutsec: 30
 ```
 
-Use the `systemd_service_environment` parameter to set environment variables for executed processes. It includes a space-separated list of variables and their values. The parameter can be used more than once. If the empty string is assigned to this option, the list of environment variables will be reset. If some value contains a space use double quotes for the assignment.
+Use the `systemd_service_environment` parameter to set environment variables for executed processes. It includes a space-separated list of variables and their values. The parameter can be used more than once. If the empty string is assigned to this option, the list of environment variables will be reset. If some value contains a space, use double quotes for the assignment.
 
 You are also able to read the environment variables from a text file. For this set the `systemd_service_environmentfile` parameter value as the file path.
 
@@ -167,7 +167,7 @@ A working directory is specified by the next parameter.
 systemd_service_workingdirectory: ""
 ```
 
-Select where file descriptors (STDIN, STDOUT, STDERR) of the executed processes should be connected to with the following parameters.
+The following parameters allow to choose where file descriptors (STDIN, STDOUT, STDERR) of the executed processes should be connected to.
 
 ```yaml
 # Controls where file descriptor 0 (STDIN) of the executed processes is connected to
