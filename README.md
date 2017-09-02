@@ -77,7 +77,7 @@ Other values behavior is similar to simple value. However, they have some differ
 - `notify` - the daemon sends a notification message via `sd_notify(3)` or a similar call when it has finished starting up.
 - `idle` - actual execution of the service binary is delayed until all active jobs are dispatched. Note that this type is useful only to improve console output, it is not useful as a general unit ordering tool.
 
-Set the next variable to use `forking` start-up type.
+Set a path to the PIDfile to use `forking` start-up type.
 
 ```yaml
 # Takes an absolute file name pointing to the PID file of this daemon
@@ -104,51 +104,83 @@ An adjustment level for the Out-Of-Memory killer for the process is specified wi
 systemd_service_oomscoreadjust: ""
 ```
 
-
+Use next parameters to specify commands that will be executed depending on the status of your service. The parameters may be used more than once or their values may include several commands. Multiple command lines may be concatenated in a single directive by separating them with semicolons (these semicolons must be passed as separate words). Lone semicolons may be escaped as '\;'. The command to execute must be an absolute path name. It may contain spaces, but control characters are not allowed. For each command the first argument must be an absolute path to an executable. An empty  string will reset the list of commands specified before for the parameter.
 
 ```yaml
+# Commands that are executed when this service is started
+# Unless `systemd_service_type` is `oneshot`, exactly one command must be given here
 systemd_service_execstart: ""
+
+# Commands that are executed before `systemd_service_execstart` commands
 systemd_service_execstartpre: ""
+
+# Commands that are executed after `systemd_service_execstart` commands
 systemd_service_execstartpost: ""
-# https://www.freedesktop.org/software/systemd/man/systemd.service.html#ExecReload=
+
+# Commands to execute to stop the service started via `systemd_service_execstart`
 systemd_service_execstop: ""
+
+# Commands that are executed after the service is stopped
 systemd_service_execstoppost: ""
+
+# Commands to execute to trigger a configuration reload in the service
 systemd_service_execreload: ""
 ```
 
 Set whether the service should be restarted when the service process (the main service process or one specified by 'execstartpre', 'execstartpost', 'execStop', 'execstoppost' or 'execrReload' parameters) exits, is killed, or a timeout is reached. The `systemd_service_restart` parameter takes one of the following values:
-- no
-- on-success
-- on-failure
-- on-abnormal
-- on-watchdog
-- on-abort
-- always
+- `no` - the service will not be restarted;
+- `on-success` - the service will be restarted only when the service process exits cleanly (with an exit code of 0, or one of the signals SIGHUP, SIGINT, SIGTERM or SIGPIPE);
+- `on-failure` - the service will be restarted when the process exits with a non-zero exit code, is terminated by a signal, when an operation times out, and when the configured watchdog timeout is triggered;
+- `on-abnormal` - the service will be restarted when the process is terminated by a signal, when an operation times out, or when the watchdog timeout is triggered;
+- `on-watchdog` - the service will be restarted only if the service process exits due to an uncaught signal not specified as a clean exit status;
+- `on-abort` - the service will be restarted only if the watchdog timeout for the service expires;
+- `always` - the service will be restarted anyway.
 
 ```yaml
 # https://www.freedesktop.org/software/systemd/man/systemd.service.html#Restart=
 systemd_service_restart: ""
 ```
 
+You are able to specify a time delay for above-mentioned commands with next parameters. The take a value in seconds or a time span value such as '5min 20s'.
+
 ```yaml
-# Configures the time to sleep before restarting a service (as configured with Restart=).
+# Configures the time to sleep before restarting a service (as configured with `systemd_service_restart`).
 systemd_service_restartsec: ""
 # Configures the time to wait for start/stop commands processing
 systemd_service_timeoutsec: 30
 ```
 
+Use the `systemd_service_environment` parameter to set environment variables for executed processes. It includes a space-separated list of variables and their values. The parameter can be used more than once. If the empty string is assigned to this option, the list of environment variables will be reset. If some value contains a space use double quotes for the assignment.
+
+You are also able to read the environment variables from a text file. For this set the `systemd_service_environmentfile` parameter value as the file path.
+
 ```yaml
-# https://www.freedesktop.org/software/systemd/man/systemd.exec.html#Environment=
-# Specify environment variables
+# Environment variables for executed processes
 systemd_service_environment: ""
 systemd_service_environmentfile: ""
-# https://www.freedesktop.org/software/systemd/man/systemd.exec.html#StandardInput=
+```
+
+A working directory is specified by the next parameter.
+
+```yaml
 # A working directory which is set as current before startup commands are launched
 systemd_service_workingdirectory: ""
+```
 
-# https://www.freedesktop.org/software/systemd/man/systemd.exec.html#StandardInput=
+Select where file descriptors (STDIN, STDOUT, STDERR) of the executed processes should be connected to with the following parameters.
+
+```yaml
+# Controls where file descriptor 0 (STDIN) of the executed processes is connected to
+# Takes values 'null', 'tty', 'tty-force', 'tty-fail', 'socket' or 'fd'.
 systemd_service_standardinput: "null"
+
+# Controls where file descriptor 1 (STDOUT) of the executed processes is connected to
+# Takes values 'inherit', 'null', 'tty', 'journal', 'syslog', 'kmsg', 'journal+console',
+# 'syslog+console', 'kmsg+console', 'socket' or 'fd'.
 systemd_service_standardoutput: "syslog"
+
+# Controls where file descriptor 2 (STDERR) of the executed processes is connected to
+# The available values are identical to 'systemd_service_standardoutput'
 systemd_service_standarderror: "inherit"
 ```
 ### Install section options
@@ -170,15 +202,24 @@ None
 - hosts: app
   roles:
     - role: systemd_service
+      # Start the service on boot
       systemd_service_enabled: yes
+      # The service name
       systemd_service_name: "railsapp"
+      # Run the processes under this user
       systemd_service_user: "deploy"
       systemd_service_group: "deploy"
+      # Execute the command with specified arguments when the service is started
       systemd_service_execstart: "/bin/bash -lc 'puma -C config/puma.rb'"
+      # Restart the service only when a clean exit code or signal wasn't gotten
       systemd_service_restart: "on-failure"
+      # Try to activate 'redis' if possible
       systemd_service_wants: "redis.service"
+      # Activate 'postgresql' or stop working in case of failure
       systemd_service_requires: "postgresql.service"
+      # Use the specified directory as current
       systemd_service_workingdirectory: "/var/www/myapp"
+      # multi-user.target unit prefers the service to be run
       systemd_service_wantedby: "multi-user.target"
 ```
 
