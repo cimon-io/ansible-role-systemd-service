@@ -1,9 +1,7 @@
 ---
-
 systemd_service_enabled: False
 
 systemd_service_name: ""
-
 systemd_service_description: "Service for {{ systemd_service_name }}"
 systemd_service_after: "network.target syslog.target"
 systemd_service_before: ""

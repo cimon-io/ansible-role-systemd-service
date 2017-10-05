@@ -7,10 +7,12 @@
   notify:
     - daemon reload
     - restart service
-  tags: [deploy, application, services]
+  tags:
+    - systemd-service
 
 - name: "enable service"
   systemd:
     name: "{{ systemd_service_name }}"
     enabled: "{{ systemd_service_enabled }}"
-  tags: [deploy, application, services]
+  tags:
+    - systemd-service
