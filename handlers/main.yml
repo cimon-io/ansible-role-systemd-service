@@ -4,5 +4,6 @@
 
 - name: "restart service"
   systemd:
-    name: "{{ systemd_service_name }}"
+    name: "{{ item.key }}"
     state: restarted
+  with_dict: "{{ systemd_service }}"

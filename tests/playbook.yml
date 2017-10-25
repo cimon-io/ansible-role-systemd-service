@@ -2,8 +2,7 @@
 - hosts: all
   roles:
     - role: systemd-service
-      systemd_service_name: "first"
-#systemd_service_user: ""
-#systemd_service_group: ""
-      systemd_service_execstart: "/bin/bash -lc '/bin/true'"
-      systemd_service_workingdirectory: "/tmp/"
+      systemd_service:
+        first:
+          execstart: "/bin/bash -lc '/bin/true'"
+          workingdirectory: "/tmp/"

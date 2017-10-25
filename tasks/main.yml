@@ -2,8 +2,9 @@
 - name: "create systemd service"
   template:
     src: "etc/systemd/system/systemd.service.j2"
-    dest: "/etc/systemd/system/{{ systemd_service_name }}.service"
+    dest: "/etc/systemd/system/{{ item.key }}.service"
     mode: 0664
+  with_dict: "{{ systemd_service }}"
   notify:
     - daemon reload
     - restart service
@@ -12,7 +13,8 @@
 
 - name: "enable service"
   systemd:
-    name: "{{ systemd_service_name }}"
-    enabled: "{{ systemd_service_enabled }}"
+    name: "{{ item.key }}"
+    enabled: "{{ item.value.enabled | default(False) }}"
+  with_dict: "{{ systemd_service }}"
   tags:
     - systemd-service

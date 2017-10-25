@@ -1,41 +1,36 @@
 ---
-systemd_service_enabled: False
+systemd_service: {}
 
-systemd_service_name: ""
-systemd_service_description: "Service for {{ systemd_service_name }}"
-systemd_service_after: "network.target syslog.target"
-systemd_service_before: ""
-
-systemd_service_user: ""
-systemd_service_group: ""
-
-systemd_service_type: ""
-systemd_service_pidfile: ""
-
-systemd_service_oomscoreadjust: ""
-systemd_service_nice: ""
-
-systemd_service_execstart: ""
-systemd_service_execstartpre: ""
-systemd_service_execstartpost: ""
-systemd_service_execstop: ""
-systemd_service_execstoppost: ""
-systemd_service_execreload: ""
-
-systemd_service_restart: ""
-systemd_service_restartsec: ""
-systemd_service_timeoutsec: 30
-
-systemd_service_wants: ""
-systemd_service_requires: ""
-
-systemd_service_environment: ""
-systemd_service_environmentfile: ""
-systemd_service_workingdirectory: ""
-
-systemd_service_standardinput: "null"
-systemd_service_standardoutput: "syslog"
-systemd_service_standarderror: "inherit"
-
-systemd_service_wantedby: "multi-user.target"
-systemd_service_requiredby: ""
+#
+# systemd_service:
+#   service_name:
+#     enabled: False
+#     description: "Service for {{ item.key }}"
+#     after: "network.target syslog.target"
+#     before: ""
+#     user: ""
+#     group: ""
+#     type: ""
+#     pidfile: ""
+#     oomscoreadjust: ""
+#     nice: ""
+#     execstart: ""
+#     execstartpre: ""
+#     execstartpost: ""
+#     execstop: ""
+#     execstoppost: ""
+#     execreload: ""
+#     restart: ""
+#     restartsec: ""
+#     timeoutsec: 30
+#     wants: ""
+#     requires: ""
+#     environment: ""
+#     environmentfile: ""
+#     workingdirectory: ""
+#     standardinput: ""
+#     standardoutput: ""
+#     standarderror: ""
+#     wantedby: "multi-user.target"
+#     requiredby: ""
+#
