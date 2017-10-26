@@ -6,7 +6,6 @@
     mode: 0664
   with_dict: "{{ systemd_service }}"
   notify:
-    - daemon reload
     - restart service
   tags:
     - systemd-service
