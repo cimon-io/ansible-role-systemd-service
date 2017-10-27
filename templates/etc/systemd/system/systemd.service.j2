@@ -23,10 +23,8 @@ Type={{ item.value.type }}
 {% if item.value.timeoutsec is defined %}
 TimeoutSec={{ item.value.timeoutsec }}
 {% endif -%}
-{% if item.value.restartsec is defined %}
-RestartSec={{ item.value.restartsec }}
-{% endif -%}
 {% if item.value.restart is defined %}
+RestartSec={{ item.value.restartsec | default('30') }}
 Restart={{ item.value.restart }}
 {% endif -%}
 
