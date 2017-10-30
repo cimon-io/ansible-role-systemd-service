@@ -4,5 +4,5 @@
     - role: systemd-service
       systemd_service:
         first:
-          execstart: "/bin/bash -lc '/bin/true'"
-          workingdirectory: "/tmp/"
+          exec_start: "/bin/bash -lc '/bin/true'"
+          working_directory: "/tmp/"
