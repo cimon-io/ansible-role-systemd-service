@@ -8,6 +8,10 @@ galaxy_info:
     - name: Ubuntu
       versions:
       - all
+
   galaxy_tags:
     - service
+    - system
+    - systemd-service
+
 dependencies: []
