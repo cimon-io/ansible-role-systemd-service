@@ -1,8 +1,10 @@
 ---
 - hosts: all
   roles:
-    - role: systemd-service
+    - role: ansible-role-systemd-service
       systemd_service:
         first:
-          exec_start: "/bin/bash -lc '/bin/true'"
+          exec_start: "/usr/bin/sleep 1d"
           working_directory: "/tmp/"
+          enabled: True
+          wanted_by: "multi-user.target"

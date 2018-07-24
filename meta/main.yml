@@ -7,7 +7,19 @@ galaxy_info:
   platforms:
     - name: Ubuntu
       versions:
-      - all
+      - xenial
+      - yakkety
+      - zesty
+      - artful
+      - bionic
+    - name: Debian
+      versions:
+      - stretch
+      - jessie
+      - buster
+    - name: EL
+      versions:
+      - 7
 
   galaxy_tags:
     - service
