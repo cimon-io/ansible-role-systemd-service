@@ -21,16 +21,8 @@
 
 - name: "enable service"
   systemd:
-    name: "{{ item.key }}"
+    name: "{{ item.key }}.service"
     enabled: "{{ item.value.enabled | default(False) }}"
   with_dict: "{{ systemd_service }}"
-  tags:
-    - systemd-service
-
-- name: "enable target"
-  systemd:
-    name: "{{ item.key }}"
-    enabled: "{{ item.value.enabled | default(False) }}"
-  with_dict: "{{ systemd_target }}"
   tags:
     - systemd-service

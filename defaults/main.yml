@@ -37,7 +37,6 @@ systemd_target: {}
 #
 # systemd_target:
 #   target_name:
-#     enabled: False
 #     description: ""
 #     requires: []
 #     before: ""

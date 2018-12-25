@@ -10,7 +10,6 @@
           wanted_by: "multi-user.target"
       systemd_target:
         test_target:
-          enabled: False
           description: ""
           requires:
             - "first.service"
