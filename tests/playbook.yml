@@ -8,3 +8,8 @@
           working_directory: "/tmp/"
           enabled: True
           wanted_by: "multi-user.target"
+      systemd_target:
+        test_target:
+          description: ""
+          requires:
+            - "first.service"

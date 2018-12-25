@@ -1,0 +1,17 @@
+# {{ ansible_managed }}
+
+[Unit]
+Description="{{ item.value.description | default("Target for " + item.key) }}"
+{% if item.value.requires is defined %}
+{% for req in item.value.requires %}
+Requires={{ req }}
+{% endfor -%}
+{% endif -%}
+{% if item.value.before is defined %}
+Before={{ item.value.before }}
+{% endif -%}
+{% if item.value.after is defined %}
+After={{ item.value.after }}
+{% endif %}
+DefaultDependencies={{ item.value.default_dependencies | default("true") }}
+AllowIsolate={{ item.value.allow_isolate | default("false") }}

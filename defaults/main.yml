@@ -1,5 +1,6 @@
 ---
 systemd_service: {}
+systemd_target: {}
 
 #
 # systemd_service:
@@ -33,4 +34,13 @@ systemd_service: {}
 #     standard_error: ""
 #     wanted_by: ""
 #     required_by: ""
+#
+# systemd_target:
+#   target_name:
+#     description: ""
+#     requires: []
+#     before: ""
+#     after: ""
+#     default_dependencies: True
+#     allow_isolate: False
 #

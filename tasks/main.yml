@@ -10,9 +10,18 @@
   tags:
     - systemd-service
 
+- name: "create systemd target"
+  template:
+    src: "etc/systemd/system/systemd.target.j2"
+    dest: "/etc/systemd/system/{{ item.key }}.target"
+    mode: 0664
+  with_dict: "{{ systemd_target }}"
+  tags:
+    - systemd-service
+
 - name: "enable service"
   systemd:
-    name: "{{ item.key }}"
+    name: "{{ item.key }}.service"
     enabled: "{{ item.value.enabled | default(False) }}"
   with_dict: "{{ systemd_service }}"
   tags:
