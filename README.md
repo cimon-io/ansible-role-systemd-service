@@ -1,4 +1,4 @@
-# Ansible system service role
+# Ansible systemd service role
 
 An ansible role that creates and configures `systemd service unit` files. It allows you to run certain services automatically in the background, enable and disable them for specific events, manage groups of processes and configure dependencies on other units.
 
