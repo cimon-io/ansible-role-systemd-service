@@ -24,6 +24,6 @@ galaxy_info:
   galaxy_tags:
     - service
     - system
-    - systemd-service
+    - systemd
 
 dependencies: []

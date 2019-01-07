@@ -6,7 +6,7 @@ systemd_target: {}
 # systemd_service:
 #   service_name:
 #     enabled: False
-#     description: "Service for {{ item.key }}"
+#     description: "Service for {{ key }}"
 #     after: ""
 #     before: ""
 #     user: ""

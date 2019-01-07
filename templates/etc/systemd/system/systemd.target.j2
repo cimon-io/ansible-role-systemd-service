@@ -1,17 +1,17 @@
 # {{ ansible_managed }}
 
 [Unit]
-Description="{{ item.value.description | default("Target for " + item.key) }}"
-{% if item.value.requires is defined %}
-{% for req in item.value.requires %}
+Description="{{ systemd_target['item'].description | default("Target for " + item) }}"
+{% if systemd_target['item'].requires is defined %}
+{% for req in systemd_target['item'].requires %}
 Requires={{ req }}
 {% endfor -%}
 {% endif -%}
-{% if item.value.before is defined %}
-Before={{ item.value.before }}
+{% if systemd_target['item'].before is defined %}
+Before={{ systemd_target['item'].before }}
 {% endif -%}
-{% if item.value.after is defined %}
-After={{ item.value.after }}
+{% if systemd_target['item'].after is defined %}
+After={{ systemd_target['item'].after }}
 {% endif %}
-DefaultDependencies={{ item.value.default_dependencies | default("true") }}
-AllowIsolate={{ item.value.allow_isolate | default("false") }}
+DefaultDependencies={{ systemd_target['item'].default_dependencies | default("true") }}
+AllowIsolate={{ systemd_target['item'].allow_isolate | default("false") }}
