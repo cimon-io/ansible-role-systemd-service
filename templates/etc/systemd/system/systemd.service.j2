@@ -86,6 +86,9 @@ StandardOutput={{ item.value.standard_output }}
 {% if item.value.standard_error is defined %}
 StandardError={{ item.value.standard_error }}
 {% endif %}
+{% if item.value.service_extra_opts is defined %}
+{{ item.value.service_extra_opts }}
+{% endif %}
 
 [Install]
 {% if item.value.wanted_by is defined %}
