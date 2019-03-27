@@ -1,4 +1,8 @@
 ---
+
+# If defined and set to True, it skips the restart handler
+# systemd_restart_disabled:
+
 systemd_service: {}
 systemd_target: {}
 
