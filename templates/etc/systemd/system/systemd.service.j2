@@ -58,23 +58,59 @@ Nice={{ item.value.nice }}
 {% endif -%}
 
 {% if item.value.exec_stop is defined %}
+{% if item.value.exec_stop is not string %}
+{% for exec_stop in item.value.exec_stop -%}
+ExecStop={{ exec_stop }}
+{% endfor %}
+{% else %}
 ExecStop={{ item.value.exec_stop }}
 {% endif -%}
+{% endif -%}
 {% if item.value.exec_stop_post is defined %}
+{% if item.value.exec_stop_post is not string %}
+{% for exec_stop_post in item.value.exec_stop_post -%}
+ExecStopPost={{ exec_stop_post }}
+{% endfor %}
+{% else %}
 ExecStopPost={{ item.value.exec_stop_post }}
 {% endif -%}
+{% endif -%}
 {% if item.value.exec_reload is defined %}
+{% if item.value.exec_reload is not string %}
+{% for exec_reload in item.value.exec_reload -%}
 ExecReload={{ item.value.exec_reload }}
+{% endfor %}
+{% else %}
+ExecReload={{ item.value.exec_reload }}
+{% endif -%}
 {% endif -%}
 
 {% if item.value.exec_start_pre is defined %}
+{% if item.value.exec_start_pre is not string %}
+{% for exec_start_pre in item.value.exec_start_pre -%}
+ExecStartPre={{ exec_start_pre }}
+{% endfor %}
+{% else %}
 ExecStartPre={{ item.value.exec_start_pre }}
 {% endif -%}
+{% endif -%}
 {% if item.value.exec_start_post is defined %}
+{% if item.value.exec_start_post is not string %}
+{% for exec_start_post in item.value.exec_start_post -%}
+ExecStartPost={{ item.value.exec_start_post }}
+{% endfor %}
+{% else %}
 ExecStartPost={{ item.value.exec_start_post }}
 {% endif -%}
+{% endif -%}
 {% if item.value.exec_start is defined %}
+{% if item.value.exec_start is not string %}
+{% for exec_start in item.value.exec_startt -%}
+ExecStart={{ exec_start }}
+{% endfor %}
+{% else %}
 ExecStart={{ item.value.exec_start }}
+{% endif -%}
 {% endif -%}
 
 {% if item.value.standard_input is defined %}

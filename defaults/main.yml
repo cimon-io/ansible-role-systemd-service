@@ -15,12 +15,12 @@ systemd_target: {}
 #     pid_file: ""
 #     oom_score_adjust: ""
 #     nice: ""
-#     exec_start: ""
-#     exec_start_pre: ""
-#     exec_start_post: ""
-#     exec_stop: ""
-#     exec_stop_post: ""
-#     exec_reload: ""
+#     exec_start: "" or exec_start: [] (only when oneshot)
+#     exec_start_pre: "" or exec_start_pre: []
+#     exec_start_post: "" or exec_start_post: []
+#     exec_stop: "" or exec_stop: []
+#     exec_stop_post: "" or exec_stop_post: []
+#     exec_reload: "" or exec_reload: []
 #     restart: ""
 #     restart_sec: ""
 #     timeout_sec: 30
