@@ -34,6 +34,28 @@ systemd_target: {}
 #     standard_error: ""
 #     wanted_by: ""
 #     required_by: ""
+#     assert_architecture: []
+#     assert_virtualization: []
+#     assert_host: []
+#     assert_kernel_command_line: []
+#     assert_kernel_version: []
+#     assert_security: []
+#     assert_capability: []
+#     assert_acpower: []
+#     assert_needs_update: []
+#     assert_first_boot: []
+#     assert_path_exists: []
+#     assert_path_exists_glob: []
+#     assert_path_is_directory: []
+#     assert_path_is_symbolic_link: []
+#     assert_path_is_mount_point: []
+#     assert_path_is_read_write: []
+#     assert_directory_not_empty: []
+#     assert_file_not_empty: []
+#     assert_file_is_executable: []
+#     assert_user: []
+#     assert_group: []
+#     assert_control_group_controller: []
 #
 # systemd_target:
 #   target_name:

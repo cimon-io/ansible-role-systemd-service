@@ -14,6 +14,116 @@ Before={{ item.value.before }}
 {% if item.value.after is defined %}
 After={{ item.value.after }}
 {% endif %}
+{% if item.value.assert_architecture is defined %}
+{% for assert_architecture in item.value.assert_architecture %}
+AssertArchitecture={{ assert_architecture }}
+{% endfor -%}
+{% endif -%}
+{% if item.value.assert_virtualization is defined %}
+{% for assert_virtualization in item.value.assert_virtualization %}
+AssertVirtualization={{ assert_virtualization }}
+{% endfor -%}
+{% endif -%}
+{% if item.value.assert_host is defined %}
+{% for assert_host in item.value.assert_host %}
+AssertHost={{ assert_host }}
+{% endfor -%}
+{% endif -%}
+{% if item.value.assert_kernel_command_line is defined %}
+{% for assert_kernel_command_line in item.value.assert_kernel_command_line %}
+AssertKernelCommandLine={{ assert_kernel_command_line }}
+{% endfor -%}
+{% endif -%}
+{% if item.value.assert_kernel_version is defined %}
+{% for assert_kernel_version in item.value.assert_kernel_version %}
+AssertKernelVersion={{ assert_kernel_version }}
+{% endfor -%}
+{% endif -%}
+{% if item.value.assert_security is defined %}
+{% for assert_security in item.value.assert_security %}
+AssertSecurity={{ assert_security }}
+{% endfor -%}
+{% endif -%}
+{% if item.value.assert_capability is defined %}
+{% for assert_capability in item.value.assert_capability %}
+AssertCapability={{ assert_capability }}
+{% endfor -%}
+{% endif -%}
+{% if item.value.assert_acpower is defined %}
+{% for assert_acpower in item.value.assert_acpower %}
+AssertACPower={{ assert_acpower }}
+{% endfor -%}
+{% endif -%}
+{% if item.value.assert_needs_update is defined %}
+{% for assert_needs_update in item.value.assert_needs_update %}
+AssertNeedsUpdate={{ assert_needs_update }}
+{% endfor -%}
+{% endif -%}
+{% if item.value.assert_first_boot is defined %}
+{% for assert_first_boot in item.value.assert_first_boot %}
+AssertFirstBoot={{ assert_first_boot }}
+{% endfor -%}
+{% endif -%}
+{% if item.value.assert_path_exists is defined %}
+{% for assert_path_exists in item.value.assert_path_exists %}
+AssertPathExists={{ assert_path_exists }}
+{% endfor -%}
+{% endif -%}
+{% if item.value.assert_path_exists_glob is defined %}
+{% for assert_path_exists_glob in item.value.assert_path_exists_glob %}
+AssertPathExistsGlob={{ assert_path_exists_glob }}
+{% endfor -%}
+{% endif -%}
+{% if item.value.assert_path_is_directory is defined %}
+{% for assert_path_is_directory in item.value.assert_path_is_directory %}
+AssertPathIsDirectory={{ assert_path_is_directory }}
+{% endfor -%}
+{% endif -%}
+{% if item.value.assert_path_is_symbolic_link is defined %}
+{% for assert_path_is_symbolic_link in item.value.assert_path_is_symbolic_link %}
+AssertPathIsSymbolicLink={{ assert_path_is_symbolic_link }}
+{% endfor -%}
+{% endif -%}
+{% if item.value.assert_path_is_mount_point is defined %}
+{% for assert_path_is_mount_point in item.value.assert_path_is_mount_point %}
+AssertPathIsMountPoint={{ assert_path_is_mount_point }}
+{% endfor -%}
+{% endif -%}
+{% if item.value.assert_path_is_read_write is defined %}
+{% for assert_path_is_read_write in item.value.assert_path_is_read_write %}
+AssertPathIsReadWrite={{ assert_path_is_read_write }}
+{% endfor -%}
+{% endif -%}
+{% if item.value.assert_directory_not_empty is defined %}
+{% for assert_directory_not_empty in item.value.assert_directory_not_empty %}
+AssertDirectoryNotEmpty={{ assert_directory_not_empty }}
+{% endfor -%}
+{% endif -%}
+{% if item.value.assert_file_not_empty is defined %}
+{% for assert_file_not_empty in item.value.assert_file_not_empty %}
+AssertFileNotEmpty={{ assert_file_not_empty }}
+{% endfor -%}
+{% endif -%}
+{% if item.value.assert_file_is_executable is defined %}
+{% for assert_file_is_executable in item.value.assert_file_is_executable %}
+AssertFileIsExecutable={{ assert_file_is_executable }}
+{% endfor -%}
+{% endif -%}
+{% if item.value.assert_user is defined %}
+{% for assert_user in item.value.assert_user %}
+AssertUser={{ assert_user }}
+{% endfor -%}
+{% endif -%}
+{% if item.value.assert_group is defined %}
+{% for assert_group in item.value.assert_group %}
+AssertGroup={{ assert_group }}
+{% endfor -%}
+{% endif -%}
+{% if item.value.assert_control_group_controller is defined %}
+{% for assert_control_group_controller in item.value.assert_control_group_controller %}
+AssertControlGroupController={{ assert_control_group_controller }}
+{% endfor -%}
+{% endif -%}
 
 [Service]
 {% if item.value.type is defined %}
