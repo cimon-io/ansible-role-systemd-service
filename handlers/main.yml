@@ -1,7 +1,7 @@
 ---
 - name: "restart service"
   systemd:
-    name: "{{ item.key }}.service"
+    name: "{{ item }}.service"
     state: restarted
     daemon_reload: yes
-  with_dict: "{{ systemd_service }}"
+  with_items: "{{ systemd_service | list }}"
