@@ -22,7 +22,7 @@
 - name: "enable service"
   systemd:
     name: "{{ item }}.service"
-    enabled: "{{ systemd_service['item'].enabled | default(False) }}"
+    enabled: "{{ systemd_service[item].enabled | default(False) }}"
   with_items: "{{ systemd_service | list }}"
   tags:
     - systemd-service
