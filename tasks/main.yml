@@ -23,6 +23,7 @@
   systemd:
     name: "{{ item.key }}.service"
     enabled: "{{ item.value.enabled | default(False) }}"
+    daemon_reload: yes
   with_dict: "{{ systemd_service }}"
   tags:
     - systemd-service
