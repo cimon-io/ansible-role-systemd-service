@@ -195,6 +195,10 @@ ExecReload={{ systemd_service[item].exec_reload }}
 {% endif -%}
 {% endif -%}
 
+{% if systemd_service[item].remain_after_exit is defined %}
+RemainAfterExit={{ systemd_service[item].remain_after_exit }}
+{% endif -%}
+
 {% if systemd_service[item].exec_start_pre is defined %}
 {% if systemd_service[item].exec_start_pre is not string %}
 {% for exec_start_pre in systemd_service[item].exec_start_pre -%}

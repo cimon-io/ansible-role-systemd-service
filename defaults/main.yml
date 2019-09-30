@@ -15,6 +15,7 @@ systemd_target: {}
 #     pid_file: ""
 #     oom_score_adjust: ""
 #     nice: ""
+#     remain_after_exit: ""
 #     exec_start: "" or exec_start: [] (only when oneshot)
 #     exec_start_pre: "" or exec_start_pre: []
 #     exec_start_post: "" or exec_start_post: []
