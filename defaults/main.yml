@@ -27,7 +27,7 @@ systemd_target: {}
 #     timeout_sec: 30
 #     wants: ""
 #     requires: ""
-#     environment: []
+#     environment: {}
 #     environment_file: ""
 #     working_directory: ""
 #     standard_input: ""

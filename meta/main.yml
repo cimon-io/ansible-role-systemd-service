@@ -1,6 +1,7 @@
 galaxy_info:
   author: Eugene Ignatov
   description: Create and configure a systemd service
+  role_name: systemd_service
   company: Cimon.io
   license: MIT
   min_ansible_version: 2.0.0
@@ -12,14 +13,18 @@ galaxy_info:
       - zesty
       - artful
       - bionic
+      - cosmic
+      - disco
     - name: Debian
       versions:
-      - stretch
       - jessie
+      - stretch
       - buster
+      - bullseye
     - name: EL
       versions:
       - 7
+      - 8
 
   galaxy_tags:
     - service

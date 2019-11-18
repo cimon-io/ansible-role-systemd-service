@@ -17,7 +17,7 @@ This role requires the root access, so either run it in a playbook with a global
 ```yaml
 - hosts: apps
   roles:
-    - role: systemd-service
+    - role: systemd_service
       become: yes
 ```
 
@@ -148,12 +148,12 @@ restart_sec:
 timeout_sec:
 ```
 
-Use the `environment` parameter to set a list of environment variables for executed processes. It includes a space-separated list of variables and their values. The parameter can be used more than once. If the empty string is assigned to this option, the list of environment variables will be reset. If some value contains a space, use double quotes for the assignment.
+Use the `environment` parameter to set a list of environment variables for executed processes. It includes a dict of variables and their values. If some value contains a space, use double quotes for the assignment.
 
 You are also able to read the environment variables from a text file. For this set the `environment_file` parameter value as the file path.
 
 ```yaml
-environment:       # A space-separated list of variable assignments
+environment:       # A dict with ENV variables
 environment_file:  # Path to a file with environment variables
 ```
 
@@ -189,7 +189,7 @@ None
 ```yaml
 - hosts: app
   roles:
-    - role: systemd-service
+    - role: systemd_service
       systemd_service:
         # Service name
         railsapp:
