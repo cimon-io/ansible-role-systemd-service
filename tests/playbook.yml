@@ -4,10 +4,13 @@
     - role: ansible-role-systemd-service
       systemd_service:
         first:
-          exec_start: "/usr/bin/sleep 1d"
+          exec_start: "/bin/sleep 1d"
           working_directory: "/tmp/"
           enabled: True
           wanted_by: "multi-user.target"
+          environment:
+            VAR1: Value1
+            VAR2: "Value 2"
       systemd_target:
         test_target:
           description: ""

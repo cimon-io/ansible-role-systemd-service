@@ -142,8 +142,8 @@ Restart={{ systemd_service[item].restart }}
 {% endif -%}
 
 {% if systemd_service[item].environment is defined %}
-{% for env in systemd_service[item].environment %}
-Environment={{ env }}
+{% for k,v in systemd_service[item].environment.items() %}
+Environment="{{ k }}={{ v }}"
 {% endfor -%}
 {% endif -%}
 {% if systemd_service[item].environment_file is defined %}
