@@ -23,8 +23,8 @@ systemd_target: {}
 #     exec_stop_post: "" or exec_stop_post: []
 #     exec_reload: "" or exec_reload: []
 #     restart: ""
-#     restart_sec: ""
-#     timeout_sec: 30
+#     restart_sec: "30"
+#     timeout_sec: ""
 #     wants: ""
 #     requires: ""
 #     environment: {}
@@ -60,7 +60,7 @@ systemd_target: {}
 #
 # systemd_target:
 #   target_name:
-#     description: ""
+#     description: "Target for {{ key }}"
 #     requires: []
 #     before: ""
 #     after: ""
