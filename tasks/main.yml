@@ -2,7 +2,7 @@
 - name: "create systemd service"
   template:
     src: "etc/systemd/system/systemd.service.j2"
-    dest: "/etc/systemd/system/{{ systemd_service[item].service_name }}.service"
+    dest: "/etc/systemd/system/{{ systemd_service[item].service_name | default(item) }}.service"
     mode: 0664
   with_items: "{{ systemd_service | list }}"
   notify:
@@ -13,7 +13,7 @@
 - name: "create systemd target"
   template:
     src: "etc/systemd/system/systemd.target.j2"
-    dest: "/etc/systemd/system/{{ systemd_service[item].service_name }}.target"
+    dest: "/etc/systemd/system/{{ systemd_service[item].service_name | default(item) }}.target"
     mode: 0664
   with_items: "{{ systemd_target | list }}"
   tags:
@@ -21,7 +21,7 @@
 
 - name: "enable service"
   systemd:
-    name: "{{ systemd_service[item].service_name }}.service"
+    name: "{{ systemd_service[item].service_name | default(item)  }}.service"
     enabled: "{{ systemd_service[item].enabled | default(False) }}"
   with_items: "{{ systemd_service | list }}"
   tags:
