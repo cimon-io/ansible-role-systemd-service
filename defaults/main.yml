@@ -4,7 +4,8 @@ systemd_target: {}
 
 #
 # systemd_service:
-#   service_name:
+#   service:
+#     service_name: ""  
 #     enabled: False
 #     description: "Service for {{ key }}"
 #     after: ""
