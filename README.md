@@ -191,7 +191,7 @@ None
 - hosts: app
   roles:
     - role: systemd_service
-      systemd:
+       systemd_service:
         # Default Service name
         railsapp:
           # Service name
