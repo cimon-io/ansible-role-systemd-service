@@ -33,7 +33,8 @@ For each service you need to set `service_name` and necessary parameter values. 
 
 ```yaml
 systemd_service:
-  service_name:
+  service:
+    service_name:
     enabled:
 ```
 
@@ -190,9 +191,11 @@ None
 - hosts: app
   roles:
     - role: systemd_service
-      systemd_service:
-        # Service name
+      systemd:
+        # Default Service name
         railsapp:
+          # Service name
+          service_name: railsapp
           # Start the service on boot
           enabled: Yes
           # Execute the command with specified arguments when the service is started
