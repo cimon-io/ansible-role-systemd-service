@@ -34,6 +34,7 @@ systemd_target: {}
 #     standard_input: ""
 #     standard_output: ""
 #     standard_error: ""
+#     tty_path: ""
 #     wanted_by: ""
 #     required_by: ""
 #     assert_architecture: []
