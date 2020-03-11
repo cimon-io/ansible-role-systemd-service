@@ -172,6 +172,12 @@ standard_output:
 standard_error:
 ```
 
+If "tty", "tty-force", or "tty-fail" is specified for any of "standard_*" parameters, then you may specify a path for the tty.
+
+```yaml
+tty_path:
+```
+
 ### Install section options
 
 This section variables carry installation information for the unit. The following two parameters can be used more than once, or space-separated lists of unit names may be specified. The lists include units which refers to this service from their `requires` and `wants` fields.
@@ -202,6 +208,8 @@ None
           exec_start: "/bin/bash -lc 'puma -C config/puma.rb'"
           # Use the specified directory as current
           working_directory: "/var/www/myapp"
+          # specify and environment variable
+          environment: {ENVVAR: value}
           # Run the processes under this user and group
           user: "deploy"
           group: "deploy"

@@ -236,6 +236,10 @@ StandardOutput={{ systemd_service[item].standard_output }}
 {% if systemd_service[item].standard_error is defined %}
 StandardError={{ systemd_service[item].standard_error }}
 {% endif %}
+{% if systemd_service[item].tty_path is defined %}
+TTYPath={{ systemd_service[item].tty_path }}
+{% endif %}
+
 
 [Install]
 {% if systemd_service[item].wanted_by is defined %}
