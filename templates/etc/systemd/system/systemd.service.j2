@@ -199,8 +199,8 @@ LimitSIGPENDING={{ systemd_service[item].limit_sigpending }}
 {% if systemd_service[item].limit_msgqueue is defined %}
 LimitMSGQUEUE={{ systemd_service[item].limit_msgqueue }}
 {% endif -%}
-{% if systemd_service[item].limit_nic is defined %}
-LimitNICE={{ systemd_service[item].limit_nic }}
+{% if systemd_service[item].limit_nice is defined %}
+LimitNICE={{ systemd_service[item].limit_nice }}
 {% endif -%}
 {% if systemd_service[item].limit_rtprio is defined %}
 LimitRTPRIO={{ systemd_service[item].limit_rtprio }}
