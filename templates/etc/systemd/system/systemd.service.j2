@@ -160,6 +160,55 @@ User={{ systemd_service[item].user }}
 Group={{ systemd_service[item].group }}
 {% endif -%}
 
+{% if systemd_service[item].limit_cpu is defined %}
+LimitCPU={{ systemd_service[item].limit_cpu }}
+{% endif -%}
+{% if systemd_service[item].limit_fsize is defined %}
+LimitFSIZE={{ systemd_service[item].limit_fsize }}
+{% endif -%}
+{% if systemd_service[item].limit_data is defined %}
+LimitDATA={{ systemd_service[item].limit_data }}
+{% endif -%}
+{% if systemd_service[item].limit_stack is defined %}
+LimitSTACK={{ systemd_service[item].limit_stack }}
+{% endif -%}
+{% if systemd_service[item].limit_core is defined %}
+LimitCORE={{ systemd_service[item].limit_core }}
+{% endif -%}
+{% if systemd_service[item].limit_rss is defined %}
+LimitRSS={{ systemd_service[item].limit_rss }}
+{% endif -%}
+{% if systemd_service[item].limit_nofile is defined %}
+LimitNOFILE={{ systemd_service[item].limit_nofile }}
+{% endif -%}
+{% if systemd_service[item].limit_as is defined %}
+LimitAS={{ systemd_service[item].limit_as }}
+{% endif -%}
+{% if systemd_service[item].limit_nproc is defined %}
+LimitNPROC={{ systemd_service[item].limit_nproc }}
+{% endif -%}
+{% if systemd_service[item].limit_memlock is defined %}
+LimitMEMLOCK={{ systemd_service[item].limit_memlock }}
+{% endif -%}
+{% if systemd_service[item].limit_locks is defined %}
+LimitLOCKS={{ systemd_service[item].limit_locks }}
+{% endif -%}
+{% if systemd_service[item].limit_sigpending is defined %}
+LimitSIGPENDING={{ systemd_service[item].limit_sigpending }}
+{% endif -%}
+{% if systemd_service[item].limit_msgqueue is defined %}
+LimitMSGQUEUE={{ systemd_service[item].limit_msgqueue }}
+{% endif -%}
+{% if systemd_service[item].limit_nic is defined %}
+LimitNICE={{ systemd_service[item].limit_nic }}
+{% endif -%}
+{% if systemd_service[item].limit_rtprio is defined %}
+LimitRTPRIO={{ systemd_service[item].limit_rtprio }}
+{% endif -%}
+{% if systemd_service[item].limit_rttime is defined %}
+LimitRTTIME={{ systemd_service[item].limit_rttime }}
+{% endif -%}
+
 {% if systemd_service[item].oom_score_adjust is defined %}
 OOMScoreAdjust={{ systemd_service[item].oom_score_adjust }}
 {% endif -%}
