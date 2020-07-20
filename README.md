@@ -8,8 +8,6 @@ The role includes the following tasks:
 3. Notify systemd that new service files exist. Restart the service.
 4. Enable the service autorun on boot if necessary.
 
-This role can be run under all versions of Ubuntu.
-
 ## Requirements
 
 This role requires the root access, so either run it in a playbook with a global `become: yes` parameter, or invoke the role in your playbook as follows:
