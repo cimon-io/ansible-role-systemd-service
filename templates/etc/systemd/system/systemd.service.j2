@@ -160,6 +160,13 @@ User={{ systemd_service[item].user }}
 Group={{ systemd_service[item].group }}
 {% endif -%}
 
+{% if systemd_service[item].capability_bounding_set is defined %}
+CapabilityBoundingSet={{ systemd_service[item].capability_bounding_set }}
+{% endif -%}
+{% if systemd_service[item].ambient_capabilities is defined %}
+AmbientCapabilities={{ systemd_service[item].ambient_capabilities }}
+{% endif -%}
+
 {% if systemd_service[item].limit_cpu is defined %}
 LimitCPU={{ systemd_service[item].limit_cpu }}
 {% endif -%}
