@@ -275,7 +275,7 @@ ExecStartPost={{ systemd_service[item].exec_start_post }}
 {% endif -%}
 {% if systemd_service[item].exec_start is defined %}
 {% if systemd_service[item].exec_start is not string %}
-{% for exec_start in systemd_service[item].exec_startt -%}
+{% for exec_start in systemd_service[item].exec_start -%}
 ExecStart={{ exec_start }}
 {% endfor %}
 {% else %}
