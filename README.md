@@ -176,6 +176,12 @@ If "tty", "tty-force", or "tty-fail" is specified for any of "standard_*" parame
 tty_path:
 ```
 
+If service should be in restarted/reloaded/started/stopped state after service is created or modified.
+```yaml
+state:
+```
+It can take values: `restarted` (default) `reloaded` `started` `stopped`
+
 ### Install section options
 
 This section variables carry installation information for the unit. The following two parameters can be used more than once, or space-separated lists of unit names may be specified. The lists include units which refers to this service from their `requires` and `wants` fields.
