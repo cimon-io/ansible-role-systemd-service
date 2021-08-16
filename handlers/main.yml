@@ -2,6 +2,6 @@
 - name: "restart service"
   systemd:
     name: "{{ item }}.service"
-    state: restarted
+    state: "{{ systemd_service[item].state | default('restarted') }}"
     daemon_reload: yes
   with_items: "{{ systemd_service | list }}"
